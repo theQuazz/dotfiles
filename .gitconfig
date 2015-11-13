@@ -1,0 +1,12 @@
+[alias]
+	co = checkout
+	pu = !bash -c \"git push -u origin $(git rev-parse --abbrev-ref HEAD)\"
+	st = status -s
+	cp = cherry-pick
+[push]
+	default = simple
+[user]
+	name = Jesse Rogers
+	email = djrquazz@gmail.com
+[rerere]
+	enabled = true
