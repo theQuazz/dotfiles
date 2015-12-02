@@ -42,6 +42,7 @@ filetype plugin indent on
 
 " statusline
 set statusline=%1*%f\ %m%r\ %=\ %l\,%c\ (%p%%)
+set laststatus=2
 
 " syntastic
 set statusline+=%#warningmsg#
