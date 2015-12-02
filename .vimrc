@@ -35,6 +35,7 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/syntastic'
+Plugin 'derekwyatt/vim-scala'
 
 call vundle#end()
 filetype plugin indent on
