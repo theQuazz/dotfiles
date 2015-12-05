@@ -1,0 +1,5 @@
+#!/bin/bash
+
+alias open="xdg-open"
+alias copy="xclip -sel clip"
+alias paste="xclip -o -sel clip"
