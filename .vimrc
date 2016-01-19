@@ -25,6 +25,9 @@ set formatoptions+=t
 " scrolloff
 set scrolloff=5
 
+" relative line numbers
+set rnu
+
 " vundle
 set nocompatible
 filetype off
