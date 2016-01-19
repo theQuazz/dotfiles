@@ -66,3 +66,7 @@ source ~/.aliases
 
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+
+# don't share history
+
+setopt append_history no_inc_append_history no_share_history
