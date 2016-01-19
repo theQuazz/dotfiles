@@ -28,6 +28,9 @@ set undoreload=10000
 set tw=80
 set formatoptions+=t
 
+" background is dark!
+set background=dark
+
 " vundle
 set nocompatible
 filetype off
