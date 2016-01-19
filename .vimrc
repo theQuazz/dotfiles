@@ -6,8 +6,14 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 
+" scroll off
+set scrolloff=5
+
+" fix backspace
+set backspace=indent,eol,start
+
 " line numbers
-set nu
+set rnu
 
 " syntax
 syntax on
@@ -22,12 +28,6 @@ set undoreload=10000
 set tw=80
 set formatoptions+=t
 
-" scrolloff
-set scrolloff=5
-
-" relative line numbers
-set rnu
-
 " vundle
 set nocompatible
 filetype off
@@ -41,6 +41,7 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/syntastic'
+Plugin 'mxw/vim-jsx'
 Plugin 'derekwyatt/vim-scala'
 
 call vundle#end()
@@ -60,8 +61,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ["eslint","jshint"]
+let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_cpp_checkers = ["u++"]
 
 " command-t
 nnoremap <C-y> :CommandT<CR>
+
+" jsx
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
