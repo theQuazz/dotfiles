@@ -22,6 +22,9 @@ set undoreload=10000
 set tw=80
 set formatoptions+=t
 
+" scrolloff
+set scrolloff=5
+
 " vundle
 set nocompatible
 filetype off
