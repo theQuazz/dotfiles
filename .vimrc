@@ -45,6 +45,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'scrooloose/syntastic'
 Plugin 'mxw/vim-jsx'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'itchyny/lightline.vim'
 Plugin 'isRuslan/vim-es6'
 
 call vundle#end()
@@ -72,3 +73,22 @@ nnoremap <C-y> :CommandT<CR>
 
 " jsx
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+" lightline
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'active': {
+      \   'right': [ [ 'lineinfo', 'syntastic' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ }
+      \ }
