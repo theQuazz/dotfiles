@@ -42,10 +42,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/syntastic'
 Plugin 'mxw/vim-jsx'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'isRuslan/vim-es6'
 
 call vundle#end()
 filetype plugin indent on
