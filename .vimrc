@@ -47,6 +47,7 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'itchyny/lightline.vim'
 Plugin 'othree/yajs.vim'
 Plugin 'mxw/vim-jsx'
+Plugin 'gavocanov/vim-js-indent'
 
 call vundle#end()
 filetype plugin indent on
