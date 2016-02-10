@@ -43,10 +43,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'scrooloose/syntastic'
-Plugin 'mxw/vim-jsx'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'itchyny/lightline.vim'
-Plugin 'isRuslan/vim-es6'
+Plugin 'othree/yajs.vim'
+Plugin 'mxw/vim-jsx'
 
 call vundle#end()
 filetype plugin indent on
