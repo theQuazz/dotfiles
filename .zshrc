@@ -66,3 +66,7 @@ which jenv > /dev/null && eval "$(jenv init -)"
 source ~/.aliases
 
 export EDITOR=vim
+
+# zsh/ohmyzsh config
+alias zshconfig="$EDITOR ~/.zshrc"
+alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
