@@ -1,5 +1,14 @@
 #!/bin/bash
 
-alias open="xdg-open"
-alias copy="xclip -sel clip"
-alias paste="xclip -o -sel clip"
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  alias open="xdg-open"
+  alias copy="xclip -sel clip"
+  alias paste="xclip -o -sel clip"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  alias copy="pbcopy"
+  alias paste="pbpaste"
+fi
+
+if which nvim > /dev/null; then
+  alias vim="nvim"
+fi
