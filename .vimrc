@@ -14,6 +14,7 @@ set backspace=indent,eol,start
 
 " line numbers
 set rnu
+set nu
 
 " syntax
 syntax on
