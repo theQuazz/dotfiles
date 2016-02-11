@@ -17,3 +17,5 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   alias paste="pbpaste"
 fi
 
+# tmux
+alias tmux="tmux -2"
