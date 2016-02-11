@@ -35,9 +35,12 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="mm/dd/yyyy"
 
+# Don't share history
+setopt append_history no_inc_append_history no_share_history
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git)
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -53,20 +56,13 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ### RVM
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+### jenv
+which jenv > /dev/null && eval "$(jenv init -)"
+
 ##
 ## aliases and stuff
 ##
 
-# vi mode
-set -o vi
-
-export EDITOR=vim
-
 source ~/.aliases
 
-alias zshconfig="$EDITOR ~/.zshrc"
-alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
-
-# don't share history
-
-setopt append_history no_inc_append_history no_share_history
+export EDITOR=vim

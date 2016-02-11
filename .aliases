@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if which nvim > /dev/null; then
+  function vim() {
+    nvim $@
+  }
+fi
+
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   alias open="xdg-open"
   alias copy="xclip -sel clip"
@@ -9,6 +15,5 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   alias paste="pbpaste"
 fi
 
-if which nvim > /dev/null; then
-  alias vim="nvim"
-fi
+alias zshconfig="$EDITOR ~/.zshrc"
+alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
