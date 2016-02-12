@@ -46,27 +46,29 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
-# NVM
+### NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"  # This loads nvm
 
 ### Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ### RVM
+# Load RVM into a shell session *as a function*
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 ### jenv
 which jenv > /dev/null && eval "$(jenv init -)"
 
 ##
-## aliases and stuff
+## Aliases
 ##
-
 source ~/.aliases
 
+# Use vim for editing
 export EDITOR=vim
 
-# zsh/ohmyzsh config
+# Quick edit zsh/ohmyzsh config
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
