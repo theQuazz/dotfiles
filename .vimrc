@@ -53,6 +53,9 @@ Plugin 'gavocanov/vim-js-indent'
 call vundle#end()
 filetype plugin indent on
 
+" colorscheme
+colorscheme koehler
+
 " statusline
 set statusline=%1*%f\ %m%r\ %=\ %l\,%c\ (%p%%)
 set laststatus=2
@@ -77,7 +80,6 @@ nnoremap <C-y> :CommandT<CR>
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " lightline
-
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'component': {
