@@ -49,6 +49,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'othree/yajs.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'gavocanov/vim-js-indent'
+Plugin 'othree/es.next.syntax.vim'
 
 call vundle#end()
 filetype plugin indent on
