@@ -3,6 +3,7 @@
 	pu = !bash -c \"git push -u origin $(git rev-parse --abbrev-ref HEAD)\"
 	st = status -s
 	cp = cherry-pick
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [push]
 	default = simple
 [user]
@@ -10,3 +11,4 @@
 	email = djrquazz@gmail.com
 [rerere]
 	enabled = true
+  autoupdate = true
