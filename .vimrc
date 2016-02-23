@@ -57,22 +57,17 @@ filetype plugin indent on
 " colorscheme
 colorscheme koehler
 
-" statusline
-set statusline=%1*%f\ %m%r\ %=\ %l\,%c\ (%p%%)
-set laststatus=2
-
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_loc_list_height = 5
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
 
 let g:syntastic_javascript_checkers = ["eslint"]
-let g:syntastic_cpp_checkers = ["u++"]
+let g:syntastic_cpp_checkers = ["u++","g++"]
 
 " command-t
 nnoremap <C-y> :CommandT<CR>
