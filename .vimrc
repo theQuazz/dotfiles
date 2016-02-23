@@ -43,7 +43,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'scrooloose/syntastic'
+Plugin 'benekastah/neomake'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'itchyny/lightline.vim'
 Plugin 'othree/yajs.vim'
@@ -57,17 +57,8 @@ filetype plugin indent on
 " colorscheme
 colorscheme koehler
 
-" syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_loc_list_height = 5
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-
-let g:syntastic_javascript_checkers = ["eslint"]
-let g:syntastic_cpp_checkers = ["u++","g++"]
+" Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 " command-t
 nnoremap <C-y> :CommandT<CR>
