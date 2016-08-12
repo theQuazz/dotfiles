@@ -44,7 +44,7 @@ plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="$PATH:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 ### NVM
 export NVM_DIR="$HOME/.nvm"
@@ -68,6 +68,9 @@ source ~/.aliases
 
 # Use vim for editing
 export EDITOR=vim
+
+# Ultra prefer my own bin
+export PATH="$HOME/bin:$PATH"
 
 # Quick edit zsh/ohmyzsh config
 alias zshconfig="$EDITOR ~/.zshrc"

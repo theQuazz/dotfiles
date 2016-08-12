@@ -1,3 +1,27 @@
+" vundle
+set nocompatible
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'wincent/command-t'
+Plugin 'scrooloose/syntastic'
+Plugin 'itchyny/lightline.vim'
+Plugin 'othree/yajs.vim'
+Plugin 'mxw/vim-jsx'
+Plugin 'gavocanov/vim-js-indent'
+Plugin 'othree/es.next.syntax.vim'
+Plugin 'tpope/vim-fugitive'
+
+call vundle#end()
+filetype plugin indent on
+
+" colorscheme
+" colorscheme koehler
+
 " indentation settings (2 spaces, always spaces)
 set expandtab
 set smartindent
@@ -32,30 +56,8 @@ set formatoptions+=t
 " background is dark!
 set background=dark
 
-" vundle
-set nocompatible
-filetype off
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'scrooloose/syntastic'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'itchyny/lightline.vim'
-Plugin 'othree/yajs.vim'
-Plugin 'mxw/vim-jsx'
-Plugin 'gavocanov/vim-js-indent'
-Plugin 'othree/es.next.syntax.vim'
-
-call vundle#end()
-filetype plugin indent on
-
-" colorscheme
-colorscheme koehler
+" reduce lag
+syntax sync minlines=256
 
 " syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -67,10 +69,21 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 
 let g:syntastic_javascript_checkers = ["eslint"]
-let g:syntastic_cpp_checkers = ["u++","g++"]
+let g:syntastic_javascript_eslint_exec = "eslint_d"
+
+let g:syntastic_cpp_checkers = ["g++"]
+
+let g:syntastic_c_checkers = ["gcc"]
+let g:syntastic_c_gcc_exec = "arm-none-eabi-gcc"
+let g:syntastic_c_config_file = ".syntastic_c_config"
+let g:syntastic_c_no_default_include_dirs = 1
+let g:syntastic_c_no_include_search = 1
+let g:syntastic_c_check_header = 1
+
+let g:syntastic_asm_gcc_exec = "arm-none-eabi-gcc"
 
 " command-t
-nnoremap <C-y> :CommandT<CR>
+nnoremap <C-t> :CommandT<CR>
 
 " jsx
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
