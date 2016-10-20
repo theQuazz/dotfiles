@@ -5,7 +5,7 @@ set -e
 CWD=$(pwd)
 dotfiles=".aliases .gitconfig .tmux-linux.conf .tmux-osx.conf .tmux.conf .vimrc .zshrc .config/xfce4/terminal/terminalrc"
 
-mkdir -p $HOME/.config/xfce4/
+mkdir -p "$HOME/.config/xfce4/terminal"
 
 for dotfile in $dotfiles; do
   if [ ! -f $HOME/$dotfile ]; then
