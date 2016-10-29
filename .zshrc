@@ -61,6 +61,10 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 ### jenv
 which jenv > /dev/null && eval "$(jenv init -)"
 
+## Go
+
+[[ -s "$HOME/.go-env.sh" ]] && source "$HOME/.go-env.sh"
+
 ##
 ## Aliases
 ##

@@ -3,7 +3,7 @@
 set -e
 
 CWD=$(pwd)
-dotfiles=".aliases .gitconfig .tmux-linux.conf .tmux-osx.conf .tmux.conf .vimrc .zshrc .config/xfce4/terminal/terminalrc"
+dotfiles=".aliases .gitconfig .tmux-linux.conf .tmux-osx.conf .tmux.conf .vimrc .zshrc .config/xfce4/terminal/terminalrc .go-env.sh"
 
 mkdir -p "$HOME/.config/xfce4/terminal"
 
