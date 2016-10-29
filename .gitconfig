@@ -1,16 +1,18 @@
 [alias]
-	co = checkout
-	pu = !bash -c \"git push -u origin $(git rev-parse --abbrev-ref HEAD)\"
-	st = status -s
-	cp = cherry-pick
+  co = checkout
+  pu = !bash -c \"git push -u origin $(git rev-parse --abbrev-ref HEAD)\"
+  st = status -s
+  cp = cherry-pick
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [push]
-	default = simple
+  default = simple
 [user]
-	name = Jesse Rogers
-	email = djrquazz@gmail.com
+  name = Jesse Rogers
+  email = djrquazz@gmail.com
 [rerere]
-	enabled = true
+  enabled = true
   autoupdate = true
 [merge]
-	tool = vimdiff
+  tool = vimdiff
+[credential]
+  helper = osxkeychain
