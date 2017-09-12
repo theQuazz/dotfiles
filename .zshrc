@@ -50,8 +50,8 @@ export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
 export NVM_DIR="$HOME/.nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"  # This loads nvm
 
-### Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+### Yarn
+export PATH="$HOME/.yarn/bin:$PATH"
 
 ### RVM
 # Load RVM into a shell session *as a function*
@@ -61,8 +61,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 ### jenv
 which jenv > /dev/null && eval "$(jenv init -)"
 
-## Go
-
+### Go
 [[ -s "$HOME/.go-env.sh" ]] && source "$HOME/.go-env.sh"
 
 ##
@@ -71,7 +70,7 @@ which jenv > /dev/null && eval "$(jenv init -)"
 source ~/.aliases
 
 # Use vim for editing
-export EDITOR=vim
+export EDITOR=nvim
 
 # Ultra prefer my own bin
 export PATH="$HOME/bin:$PATH"
@@ -79,3 +78,5 @@ export PATH="$HOME/bin:$PATH"
 # Quick edit zsh/ohmyzsh config
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+
+export PATH="$HOME/.yarn/bin:$PATH"
