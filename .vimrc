@@ -1,52 +1,78 @@
-" python
-let g:python_host_prog = "/Users/quazz/neovim2/bin/python"
-let g:python3_host_prog = "/Users/quazz/neovim3/bin/python"
-
 set nocompatible
 filetype off
 
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-sensible'
+
 " Utils
 Plug 'gmarik/Vundle.vim'
+
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/tpope-vim-abolish'
+
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
+
 Plug 'w0rp/ale'
-Plug 'wincent/command-t', { 'do': 'bundle install && rake make' }
+
 Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'
+
 Plug 'mileszs/ack.vim'
+
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+
+" TypeScript
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+" FZF
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " JavaScript
 Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
 Plug 'mxw/vim-jsx'
+Plug 'moll/vim-node'
 " Plug 'gavocanov/vim-js-indent'
 " Plug 'flowtype/vim-flow'
-Plug 'moll/vim-node'
 " Plug 'ruanyl/vim-fixmyjs'
 
 " Ruby
-Plug 'slim-template/vim-slim'
+" Plug 'slim-template/vim-slim'
 
 " Scala
 " Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'derekwyatt/vim-scala'
 
+" Rust
+Plug 'rust-lang/rust.vim'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
 call plug#end()
 
 " colorscheme
-" colorscheme koehler
+colorscheme default
 
 " indentation settings
 set autoindent
+set cindent
 set expandtab
 set copyindent
 set preserveindent
+set smartindent
+set indentexpr&
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
@@ -98,11 +124,14 @@ set undodir=$HOME/.vim/undo/ " ! make this directory !
 set undolevels=1000
 set undoreload=10000
 
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
+
 " 100 chars max/line
 set tw=99
 set wrap
 set formatoptions=qrn1
-set colorcolumn=100
+" set colorcolumn=100
 
 " mouse
 if has('mouse') | set mouse=a | endif
@@ -117,11 +146,20 @@ syntax sync minlines=256
 let g:ale_sign_error = "╳"
 let g:ale_sign_warning = "⚠"
 let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_on_text_changed = "never"
-let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_text_changed = "never"
+let g:ale_lint_on_enter = 1
 let g:ale_sign_column_always = 1
+let g:ale_javascript_eslint_use_global = 1
 let g:ale_javascript_eslint_executable = 'eslint_d'
-let g:ale_fixers = { 'javascript': ['eslint'] }
+let g:ale_fixers = {
+\  'javascript': ['eslint'],
+\  'typescript': ['eslint'],
+\  'rust': ['rustfmt'],
+\}
+let g:ale_linters = {
+\  'typescript': ['eslint', 'tsserver', 'typecheck'],
+\  'rust': ['rls'],
+\}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nnoremap <leader>f :ALEFix<CR>
@@ -131,20 +169,25 @@ nnoremap <leader>f :ALEFix<CR>
 " let ensime_server_v2=1
 " nnoremap <leader>t :EnTypeCheck<CR>
 
+"" tsx
+" set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+hi link tsxTagName keyword
+
 "" jsx
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 "" AirLine
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#format = 1
 let g:airline_powerline_fonts = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 "" Nerd Tree
 " How can I close vim if the only window left open is a NERDTree?
 let g:NERDTreeShowLineNumbers=1
 autocmd BufEnter NERD_* setlocal rnu
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" How can I open NERDTree automatically when vim starts up on opening a directory?
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 " Remap
 nnoremap <leader>r :NERDTreeFind<CR>
 map <C-n> :NERDTreeToggle<CR>
@@ -155,10 +198,11 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCompactSexyComs = 1
 
-"" Command-T
-let g:CommandTFileScanner = 'git'
-nnoremap <leader>. :CommandTTag<cr>
-nnoremap <C-t> :CommandT<CR>
+"" FZF
+nnoremap <leader>u :FZF<CR>
+nnoremap <leader>g :GFiles<CR>
+nnoremap <leader>h :Rg<CR>
+nnoremap <leader>j :Rg!<CR>
 
 "" deoplete
 " call deoplete#enable()
@@ -173,4 +217,24 @@ nnoremap <C-t> :CommandT<CR>
 " nnoremap <leader>f :Fixmyjs<CR>
 
 " Ack
-nnoremap <leader>a :Ack<space>
+nnoremap <leader>a :Rg<space>
+
+" TypeScript
+let g:typescript_compiler_options = '--lib es6 --target es6'
+
+" tsuquyomi
+autocmd FileType typescript nnoremap <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+let g:tsuquyomi_disable_quickfix = 1
+let g:tsuquyomi_completion_detail = 1
+
+" Rust
+let g:ale_rust_cargo_use_check = 1
+let g:ale_rust_rls_toolchain = 'stable'
+
+if executable('rls')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif

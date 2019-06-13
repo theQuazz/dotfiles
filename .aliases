@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# use nvim if its there
-if which nvim > /dev/null; then
-  function vim() {
-    nvim $@
-  }
-fi
-
 # open, copy, paste
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   alias open="xdg-open"
@@ -19,3 +12,6 @@ fi
 
 # tmux
 alias tmux="tmux -2"
+
+# git-branch
+alias git-branch="git rev-parse --abbrev-ref HEAD"
