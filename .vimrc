@@ -22,36 +22,16 @@ Plug 'edkolev/tmuxline.vim'
 
 Plug 'mileszs/ack.vim'
 
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-
-" TypeScript
+" JavaScript & TypeScript
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Quramy/tsuquyomi'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'moll/vim-node'
 
 " FZF
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-
-" JavaScript
-Plug 'othree/yajs.vim'
-Plug 'othree/es.next.syntax.vim'
-Plug 'mxw/vim-jsx'
-Plug 'moll/vim-node'
-" Plug 'gavocanov/vim-js-indent'
-" Plug 'flowtype/vim-flow'
-" Plug 'ruanyl/vim-fixmyjs'
-
-" Ruby
-" Plug 'slim-template/vim-slim'
-
-" Scala
-" Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'derekwyatt/vim-scala'
 
 " Rust
 Plug 'rust-lang/rust.vim'
