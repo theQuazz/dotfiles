@@ -144,18 +144,10 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nnoremap <leader>f :ALEFix<CR>
 
-"" Ensime
-" autocmd BufWritePost *.scala silent :EnTypeCheck
-" let ensime_server_v2=1
-" nnoremap <leader>t :EnTypeCheck<CR>
-
 "" tsx
 " set filetypes as typescript.tsx
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.js,*.tsx,*.jsx set filetype=typescript.tsx
 hi link tsxTagName keyword
-
-"" jsx
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 "" AirLine
 let g:airline#extensions#tabline#enabled = 1
@@ -179,22 +171,11 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCompactSexyComs = 1
 
 "" FZF
-nnoremap <leader>u :FZF<CR>
+nnoremap <leader>s :FZF src<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>h :Rg<CR>
 nnoremap <leader>j :Rg!<CR>
 
-"" deoplete
-" call deoplete#enable()
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-
-": Fixmyjs
-" let g:fixmyjs_use_local = 1
-" let g:fixmyjs_engine = 'eslint'
-" let g:fixmyjs_rc_filename = ['.eslintrc', '.eslintrc.json']
-" let g:fixmyjs_executable = 'eslint_d'
-" nnoremap <leader>f :Fixmyjs<CR>
 
 " Ack
 nnoremap <leader>a :Rg<space>
@@ -206,6 +187,8 @@ let g:typescript_compiler_options = '--lib es6 --target es6'
 autocmd FileType typescript nnoremap <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 let g:tsuquyomi_disable_quickfix = 1
 let g:tsuquyomi_completion_detail = 1
+let g:tsuquyomi_javascript_support = 1
+let g:tsuquyomi_single_quote_import = 1
 
 " Rust
 let g:ale_rust_cargo_use_check = 1
