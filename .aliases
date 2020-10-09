@@ -6,6 +6,9 @@ alias tmux="tmux -2"
 # git-branch
 alias git-branch="git rev-parse --abbrev-ref HEAD"
 
+# list files with directories first
+alias ll="/usr/local/bin/gls --color -h --group-directories-first -la"
+
 ### FZF
 
 # fbr - checkout git branch
@@ -57,7 +60,7 @@ vg() {
   local file
   local line
 
-  read -r file line <<<"$(ag --nobreak --noheading $@ | fzf -0 -1 | awk -F: '{print $1, $2}')"
+  read -r file line <<<"$(rg $@ | fzf -0 -1 | awk -F: '{print $1, $2}')"
 
   if [[ -n $file ]]
   then

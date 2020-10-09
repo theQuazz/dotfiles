@@ -18,9 +18,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
 
 Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
 Plug 'edkolev/tmuxline.vim'
-
-Plug 'mileszs/ack.vim'
 
 " JavaScript & TypeScript
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -39,6 +38,9 @@ Plug 'rust-lang/rust.vim'
 " Plug 'prabirshrestha/vim-lsp'
 " Plug 'prabirshrestha/asyncomplete.vim'
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+" Terraform
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
@@ -91,8 +93,6 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>v V`]
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
 nnoremap <leader>w <C-w>v<C-w>l
-nnoremap <leader>ex yy:@"
-nnoremap <leader>y :! /usr/local/bin/ctags -f .git/tags -R .<cr>
 nnoremap <leader>p :cclose<CR>
 
 " syntax
@@ -113,6 +113,9 @@ set wrap
 set formatoptions=qrn1
 " set colorcolumn=100
 
+" remove vert bar |
+set fillchars+=vert:\ 
+
 " mouse
 if has('mouse') | set mouse=a | endif
 
@@ -123,9 +126,8 @@ set background=dark
 syntax sync minlines=256
 
 " Ale
-let g:ale_sign_error = "╳"
+let g:ale_sign_error = "☉ "
 let g:ale_sign_warning = "⚠"
-let g:airline#extensions#ale#enabled = 1
 " let g:ale_lint_on_text_changed = "never"
 let g:ale_lint_on_enter = 1
 let g:ale_sign_column_always = 1
@@ -149,10 +151,7 @@ nnoremap <leader>f :ALEFix<CR>
 autocmd BufNewFile,BufRead *.js,*.tsx,*.jsx set filetype=typescript.tsx
 hi link tsxTagName keyword
 
-"" AirLine
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#branch#format = 1
-let g:airline_powerline_fonts = 1
+"" Ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
@@ -176,6 +175,35 @@ nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>h :Rg<CR>
 nnoremap <leader>j :Rg!<CR>
 
+" lightline
+let g:tmuxline_powerline_separators = 0
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'right': [
+      \     [ 'lineinfo' ],
+      \     [ 'percent' ],
+      \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'filetype' ],
+      \   ],
+      \ },
+      \ 'component_expand': {
+      \   'linter_checking': 'lightline#ale#checking',
+      \   'linter_warnings': 'lightline#ale#warnings',
+      \   'linter_errors': 'lightline#ale#errors',
+      \   'linter_ok': 'lightline#ale#ok',
+      \ },
+      \ 'component_type': {
+      \   'linter_checking': 'left',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error',
+      \   'linter_ok': 'left',
+      \ },
+      \ }
+let g:lightline#ale#indicator_checking = "♽ "
+let g:lightline#ale#indicator_warnings = "⚠ "
+let g:lightline#ale#indicator_errors = "☉ "
+let g:lightline#ale#indicator_ok = "✔ "
+let g:ale_set_highlights = 0
 
 " Ack
 nnoremap <leader>a :Rg<space>
@@ -184,15 +212,16 @@ nnoremap <leader>a :Rg<space>
 let g:typescript_compiler_options = '--lib es6 --target es6'
 
 " tsuquyomi
-autocmd FileType typescript nnoremap <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 let g:tsuquyomi_disable_quickfix = 1
 let g:tsuquyomi_completion_detail = 1
 let g:tsuquyomi_javascript_support = 1
 let g:tsuquyomi_single_quote_import = 1
+nnoremap <leader>i :TsuImport<cr>
 
-" Rust
-let g:ale_rust_cargo_use_check = 1
-let g:ale_rust_rls_toolchain = 'stable'
+" " Rust
+" let g:ale_rust_cargo_use_check = 1
+" let g:ale_rust_rls_toolchain = 'stable'
 
 if executable('rls')
   au User lsp_setup call lsp#register_server({

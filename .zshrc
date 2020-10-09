@@ -71,6 +71,9 @@ export PATH="$HOME/bin:$PATH"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 
+## FZF
+# export FZF_DEFAULT_OPTS='--height 20%'
+
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
 [[ -f /Users/quazz/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/quazz/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
