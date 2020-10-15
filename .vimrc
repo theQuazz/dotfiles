@@ -18,10 +18,10 @@ Plug 'maximbaz/lightline-ale'
 Plug 'edkolev/tmuxline.vim'
 
 " JavaScript & TypeScript
-Plug 'pangloss/vim-javascript'    " JavaScript support
-Plug 'leafgarland/typescript-vim' " TypeScript syntax
-Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
-Plug 'moll/vim-node'              " Node utils (go to file)
+Plug 'pangloss/vim-javascript'     " JavaScript support
+Plug 'leafgarland/typescript-vim'  " TypeScript syntax
+Plug 'peitalin/vim-jsx-typescript' " Syntax Highlighting
+Plug 'moll/vim-node'               " Node utils (go to file)
 
 " Prisma
 Plug 'pantharshit00/vim-prisma'
@@ -168,6 +168,10 @@ set tagfunc=CocTagFunc
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
+highlight tsxTagName ctermfg=Blue
+highlight tsxComponentName ctermfg=Blue
+highlight tsxCloseComponentName ctermfg=Blue
+highlight Label ctermfg=Red
 
 " CoC
 nmap <silent> gd <Plug>(coc-definition)
