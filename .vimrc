@@ -5,7 +5,6 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
-
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/tpope-vim-abolish'
 
@@ -14,7 +13,6 @@ Plug 'scrooloose/nerdcommenter'
 
 " LightLine
 Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
 Plug 'edkolev/tmuxline.vim'
 
 " JavaScript & TypeScript
@@ -163,7 +161,6 @@ nnoremap <leader>a :Rg<space>
 " TypeScript
 autocmd BufNewFile,BufRead *.js,*.tsx,*.jsx set filetype=typescript.tsx
 let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json']
-set tagfunc=CocTagFunc
 " Add CoC ESLint if ESLint is installed
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
@@ -172,13 +169,17 @@ highlight tsxTagName ctermfg=Blue
 highlight tsxComponentName ctermfg=Blue
 highlight tsxCloseComponentName ctermfg=Blue
 highlight Label ctermfg=Red
+highlight Conditional ctermfg=Red
+highlight typescriptStatement ctermfg=Red
 
 " CoC
+set tagfunc=CocTagFunc
+set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-set signcolumn=yes " always show gutter
+set signcolumn=number " always show gutter
 highlight clear SignColumn
 highlight CocWarningSign ctermfg=216
 highlight CocErrorSign ctermfg=167
@@ -189,10 +190,18 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 " Next/prev diagnostic problem
-nmap <C-j> <Plug>(coc-diagnostic-next)
-nmap <C-k> <Plug>(coc-diagnostic-prev)
+nmap <C-g> <Plug>(coc-diagnostic-next)
+nmap <C-h> <Plug>(coc-diagnostic-prev)
 " Apply AutoFix to file
 nmap <leader>f :CocCommand eslint.executeAutofix<CR>
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" Symbol renaming.
+nmap <leader>n <Plug>(coc-rename)
+" For showing completion options
+inoremap <silent><expr> <C-@> coc#refresh()
 
 " For Tab Completion
 function! s:check_back_space() abort

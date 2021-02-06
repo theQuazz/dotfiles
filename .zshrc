@@ -87,3 +87,6 @@ alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 ## rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
